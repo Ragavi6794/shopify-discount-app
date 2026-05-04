@@ -17,7 +17,7 @@ api_version = "2026-07"
 # read_customers: needed to query customer data for eligibility checks
 # read_products: needed to query product data for discount targeting
 # read_shipping: needed to query shipping zones for shipping discounts
-scopes = "write_discounts,read_customers,read_products,read_shipping"
+scopes = "write_discounts,read_customers,read_products,read_shipping,write_products"
 
 [auth]
 redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
@@ -35,4 +35,4 @@ access.storefront = "none"
 type = "number_decimal"
 name = "GWP Minimum Spend"
 access.admin = "merchant_read_write"
-access.storefront = "public"
+access.storefront = "public_read"
