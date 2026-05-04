@@ -1,0 +1,10 @@
+api_version = "2026-01"
+uid = "768345c6-43df-d004-5d29-b398b7e37948aa8f35dd"
+
+[[extensions]]
+name = "GWP Auto Add"
+handle = "gwp-auto-add"
+type = "theme"
+
+[extensions.development]
+root_url = "/"

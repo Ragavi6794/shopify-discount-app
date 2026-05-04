@@ -1,0 +1,33 @@
+{% comment %}
+  GWP Auto-Add block
+  ─────────────────────────────────────────────────────────────────────
+  Install: Online Store → Themes → Customize → add this block anywhere
+  in your theme layout (e.g. body / footer).
+
+  NO settings to configure here.
+
+  The gift product and minimum spend are read automatically from the
+  product metafield (gwp.min_spend) set on your gift product in
+  Shopify Admin → Products → [gift product] → Metafields.
+
+  One-time product setup:
+    1. Go to Shopify Admin → Products → [your gift product]
+    2. Scroll to Metafields
+    3. Set "GWP Minimum Spend" to e.g. 499
+    4. Also add the tag  gwp-gift  to the product
+    5. Save — auto-add will work on every storefront page.
+  ─────────────────────────────────────────────────────────────────────
+{% endcomment %}
+
+<script>
+  window.__SHOP_DOMAIN__ = {{ shop.permanent_domain | json }};
+</script>
+<script src="{{ 'gwp-auto-add.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "GWP Auto Add",
+  "target": "body",
+  "javascript": "gwp-auto-add.js",
+  "settings": []
+}
+{% endschema %}

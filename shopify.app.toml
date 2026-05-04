@@ -1,0 +1,38 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "75516b22689db926ec413b97cef7f41e"
+name = "discount-app"
+application_url = "https://shopify.dev/apps/default-app-home"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2026-07"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+# write_discounts: required for creating/updating discounts via GraphQL mutations
+# read_customers: needed to query customer data for eligibility checks
+# read_products: needed to query product data for discount targeting
+# read_shipping: needed to query shipping zones for shipping discounts
+scopes = "write_discounts,read_customers,read_products,read_shipping"
+
+[auth]
+redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
+
+[discount.metafields.app.function-configuration]
+type = "json"
+name = "Function configuration"
+access.admin = "merchant_read_write"
+access.storefront = "none"
+
+# Product metafield: marks a product as the GWP gift item.
+# Merchants set this on the gift product in Admin → Products → Metafields.
+# Readable by the storefront JS via the Storefront API.
+[product.metafields.gwp.min_spend]
+type = "number_decimal"
+name = "GWP Minimum Spend"
+access.admin = "merchant_read_write"
+access.storefront = "public"

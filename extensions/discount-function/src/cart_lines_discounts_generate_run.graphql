@@ -1,0 +1,35 @@
+query CartInput($collectionIds: [ID!], $giftCollectionIds: [ID!]) {
+  cart {
+    lines {
+      id
+      quantity
+      cost {
+        subtotalAmount {
+          amount
+        }
+      }
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          product {
+            id
+            inAnyCollection(ids: $collectionIds)
+            inAnyGiftCollection: inAnyCollection(ids: $giftCollectionIds)
+            discountPercent: metafield(namespace: "bulk_discount", key: "discount_percent") {
+              value
+            }
+            minQuantity: metafield(namespace: "bulk_discount", key: "min_quantity") {
+              value
+            }
+          }
+        }
+      }
+    }
+  }
+  discount {
+    discountClasses
+    metafield(namespace: "$app", key: "function-configuration") {
+      value
+    }
+  }
+}
